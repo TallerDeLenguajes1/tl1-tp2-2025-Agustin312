@@ -1,0 +1,8 @@
+Trabajo Práctico Nª2
+Desarrollo
+2) 
+    f- ¿Puede ver el archivo tp2_1_2.c? ¿Por qué?
+        No se puede ver el archivo tp2_1_2.c ya que el mismo solo existe en la rama en el que se creo hasta que la misma se fucione con otra en la que queramos que aparezca, en nuestro caso fucionamos main con Opcion_02 para que el archivo tp2_1_2.c aparezca en las dos.
+
+        ¿Qué diferencias nota?
+        Al agregar el archivo Respuestas.txt y hacer un commit en main antes de fucionarla con Opcion_02, podemos observar la separacion de las ramas main y Opcion_02 graficamente en el Source Control de VSCode.
