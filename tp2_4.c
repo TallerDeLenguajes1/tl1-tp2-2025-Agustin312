@@ -9,6 +9,9 @@ struct compu {
  char *tipo_cpu; // Tipo de procesador (apuntador a cadena de caracteres)
 }typedef compu;
 
+char tipos[6][10] = {"Intel", "AMD", "Celeron", "Athlon", "Core",
+    "Pentium"};
+
 void listarPCs(compu *pcs, int cantidad);
 void mostrarMasVieja(compu *pcs, int cantidad);
 void mostrarMasVeloz(compu *pcs, int cantidad);
@@ -19,19 +22,17 @@ int main(){
    
     cargarDatos(PCs);
 
-    for (int i = 0; i < 5; i++)
-    {
-        printf("Tipo pc %i : %s\n",i+1,PCs[i].tipo_cpu);
-    }
-    
+    listarPCs(PCs,4);
+
+    mostrarMasVieja(PCs,4);
+
+    return 0;
 }
 
 void cargarDatos(compu *pcs){
 
     int i;
-    char tipos[6][10] = {"Intel", "AMD", "Celeron", "Athlon", "Core",
-    "Pentium"};
-    
+
     srand(time(NULL));
     
     for(i=0; i<5; i++){  
@@ -42,4 +43,44 @@ void cargarDatos(compu *pcs){
         pcs[i].velocidad = (rand() % (3 - 1+ 1)) + 1;
         pcs[i].tipo_cpu = tipos[indiceRand];
     }
+}
+
+
+void listarPCs(compu *pcs, int cantidad){
+
+    printf("----Lista de las primeras %i PCs ----\n",cantidad);
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        printf("-----Pc numero %i -----\n",i+1);
+        printf("Velocidad: %iGHz\n",pcs[i].velocidad);
+        printf("Anio de fabricacion: %i\n",pcs[i].anio);
+        printf("Cantidad de Nucleos: %i\n",pcs[i].cantidad_nucleos);
+        printf("Tipo de CPU: %s\n",pcs[i].tipo_cpu);
+    }
+    
+}
+
+void mostrarMasVieja(compu *pcs, int cantidad){
+
+    int menor = 10000;
+    int indice;
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (pcs[i].anio < menor)
+        {
+            menor = pcs[i].anio;
+            indice = i;
+        }
+        
+    }
+
+    printf("--- La computadora más vieja es la PC numero: %i\n ---",indice+1);
+    printf("Sus caracteristicas son: \n");
+    printf("Velocidad: %iGHz\n",pcs[indice].velocidad);
+    printf("Anio de fabricacion: %i\n",pcs[indice].anio);
+    printf("Cantidad de Nucleos: %i\n",pcs[indice].cantidad_nucleos);
+    printf("Tipo de CPU: %s\n",pcs[indice].tipo_cpu);
+
 }
