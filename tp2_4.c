@@ -22,9 +22,11 @@ int main(){
    
     cargarDatos(PCs);
 
-    listarPCs(PCs,4);
+    listarPCs(PCs,4); //utilizo las funciones con un valor de 4 pcs
 
     mostrarMasVieja(PCs,4);
+
+    mostrarMasVeloz(PCs,4);
 
     return 0;
 }
@@ -83,4 +85,26 @@ void mostrarMasVieja(compu *pcs, int cantidad){
     printf("Cantidad de Nucleos: %i\n",pcs[indice].cantidad_nucleos);
     printf("Tipo de CPU: %s\n",pcs[indice].tipo_cpu);
 
+}
+
+void mostrarMasVeloz(compu *pcs, int cantidad){
+    int mayor = 0;
+    int indice;
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (pcs[i].velocidad > mayor)
+        {
+            mayor = pcs[i].anio;
+            indice = i;
+        }
+        
+    }
+
+    printf("--- La computadora más veloz es la PC numero: %i\n ---",indice+1);
+    printf("Sus caracteristicas son: \n");
+    printf("Velocidad: %iGHz\n",pcs[indice].velocidad);
+    printf("Anio de fabricacion: %i\n",pcs[indice].anio);
+    printf("Cantidad de Nucleos: %i\n",pcs[indice].cantidad_nucleos);
+    printf("Tipo de CPU: %s\n",pcs[indice].tipo_cpu);
 }
